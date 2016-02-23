@@ -1,0 +1,12 @@
+Package: CDASimStudies
+Type: Package
+Title: Cognitive Diagnostic Simulation Studies
+Version: 0.1
+Date: 2016-02-04
+Author: Dave Rackham
+Maintainer: <ddrackham@gmail.com>
+Description: Enables simulations of data-model fit for Cognitive Diagnostic Models
+License: GPL-3.0
+LazyData: TRUE
+RoxygenNote: 5.0.0
+Imports: rstan, runjags
