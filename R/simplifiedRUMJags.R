@@ -30,7 +30,6 @@ N <- data$N
 x <- data$xMat
 
 dataList = list(
-  #N = N ,
   I = I ,
   K = K ,
   J = J ,

@@ -16,13 +16,13 @@ model
 
   for(i in 1:I){
     for(k in 1:K){
-      rStar[i,k] ~ dbeta(12,5)
+      rStar[i,k] ~ dbeta(3,3)
     }
   }
 
   for(j in 1:J){
     for(k in 1:K){
-      alpha[j,k] ~ dbeta(12,2)
+      alpha[j,k] ~ dbeta(6,6)
     }
   }
 
