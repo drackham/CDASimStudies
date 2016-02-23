@@ -1,6 +1,6 @@
 data {
-  int<lower=1> J;                 // number of examinees
   int<lower=1> I;                 // number of items
+  int<lower=1> J;                 // number of examinees
   int<lower=1> K;                 // number of skills
   int<lower=1> N;                 // number of observations
   int<lower=1,upper=J> jj[N];     // student for observation n
@@ -27,7 +27,7 @@ model {
 
   for (n in 1:N) {
     for (k in 1:K){
-      x[n] ~ bernoulli_logit(prod(rStar[ii[]]^((1-alpha)*q)));
+      x[n] ~ bernoulli_logit(prod(rStar[ii[k]]^((1-alpha[ii[k]])*q)));
     }
   }
 

@@ -9,42 +9,45 @@
 #' @keywords hartz roussos RUM STAN
 #'
 #' @examples
-#' simplifiedRUMSimSTAN()
+#' sim1 <- simplifiedRUMSimSTAN()
 #' @export
-
-# simplifiedRUMSimSTAN <- function(){ }
 
 ## Temp loads for convenience
 library('rstan')
 library('CDADataSims', lib.loc = '/usr/local/lib/R/3.2/site-library')
 
-data <- simplifiedRUMData()
-q <- hartzRoussosQLow()
+simplifiedRUMSimSTAN <- function(data, q) {
 
-J <- data$J
-I <- data$I
-N <- data$N
-x <- data$x
-jj <- data$jj
-ii <- data$ii
+  data <- simplifiedRUMData()
+  q <- hartzRoussosQLow()
 
-fit <- 0
-nChains <- 1;
-nIter <- 200;
-tStart <- proc.time()[3];
+  J <- data$J
+  I <- data$I
+  N <- data$N
+  x <- data$x
+  jj <- data$jj
+  ii <- data$ii
 
-# print(paste("J=",J,", K=",K," N=",J*K,sep=""),quote=F);
+  fit <- 0
+  nChains <- 1;
+  nIter <- 10;
+  tStart <- proc.time()[3];
 
-fit <- stan(file='irt_multilevel.stan',
-            data=list(J=J,K=I,N=N,jj=jj,kk=ii,y=x),
-            fit=fit,
-            # init=0,
-            iter=nIter,
-            chains=nChains,
-            seed=23)
+  # print(paste("J=",J,", K=",K," N=",J*K,sep=""),quote=F);
 
-tEnd <- proc.time()[3]
-tElapsed <- tEnd - tStart
+  # fit <- stan(file='R/irt_multilevel.stan',
+  #             data=list(J=J,K=I,N=N,jj=jj,kk=ii,y=x),
+  #             fit=fit,
+  #             # init=0,
+  #             iter=nIter,
+  #             chains=nChains,
+  #             seed=23)
+
+  tEnd <- proc.time()[3]
+  tElapsed <- tEnd - tStart
+
+}
+
 
 
 
