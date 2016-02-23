@@ -1,0 +1,9 @@
+# .travis.yml for R CDASimStudies
+
+language: r
+warnings_are_errors: false
+sudo: required
+
+notifications:
+  email:
+  - ddrackham@gmail.com
