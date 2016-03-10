@@ -10,6 +10,7 @@
 
 runJagsSim <- function(data,
                        q = NULL,
+                       model = "simplifiedRUM.jags",
                        adaptSteps = 10,
                        burnInSteps = 40,
                        numSavedSteps = 10,
@@ -27,11 +28,11 @@ runJagsSim <- function(data,
     q = q ,
     x = x)
 
-  jagsModel <- system.file("Models", "simplifiedRUM.jags", package="CDASimStudies") # See: https://stat.ethz.ch/pipermail/r-help/2010-August/247748.html
-  # jags.params = c('alpha', 'rStar')
-  jags.params = c('rStar')
+  jagsModel <- system.file("Models", model, package="CDASimStudies") # See: https://stat.ethz.ch/pipermail/r-help/2010-August/247748.html
+  jags.params = c('alpha', 'rStar')
+  # jags.params = c('rStar')
 
-  nChains = min(1, max(1, parallel::detectCores()-1)) # Multi-core support 1 less than num cores, up to 1
+  nChains = min(8, parallel::detectCores()-1) # Multi-core support 1 less than num cores, up to 1
 
   inits <- vector("list", nChains)
 
@@ -52,7 +53,7 @@ runJagsSim <- function(data,
                           burnin=burnInSteps,
                           sample=ceiling(numSavedSteps/nChains),
                           thin=thinSteps,
-                          keep.jags.file=FALSE, # see results.jags
+                          keep.jags.file=TRUE, # see results.jags
                           summarise=FALSE,
                           plots=FALSE,
                           inits=inits # http://andrewgelman.com/2011/07/23/parallel-jags-rngs/
