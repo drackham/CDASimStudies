@@ -337,7 +337,7 @@ model
 
   for(j in 1:J){
     for(k in 1:K){
-      alpha[j,k] ~ dbeta(6,6)
+      alpha[j,k] ~ dbeta(3,3)
     }
   }
 
