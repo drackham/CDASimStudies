@@ -1,7 +1,7 @@
 model
 {
-  for(i in 1:I){  #40
-    for(j in 1:J){ #1500
+  for(i in 1:I){  # Item
+    for(j in 1:J){ # Resondents
       for(k in 1:K){
         d[i,j,k] <- rStar[i,k]^((1-alpha[j,k])*q[i,k])
       }
@@ -16,7 +16,7 @@ model
 
   for(i in 1:I){
     for(k in 1:K){
-      rStar[i,k] ~ dbeta(1,1)
+      rStar[i,k] ~ dbeta(2,2)
     }
   }
 
