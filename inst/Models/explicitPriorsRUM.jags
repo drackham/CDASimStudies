@@ -16,7 +16,7 @@ model
 
   for (i in 1:I){
     for (k in 1:K){
-      ifelse (q[i,k]==1, rStar[i,k] ~ dunif(1,1), rStar[i,k] ~ dbeta(2,8))
+      rStar[i,k] ~ ifelse(q[i,k]==1, dunif(1,1), dbeta(2,8))
     }
   }
 
