@@ -25,6 +25,4 @@ model
       alpha[j,k] ~ dbeta(2,2)
     }
   }
-
 }
-
