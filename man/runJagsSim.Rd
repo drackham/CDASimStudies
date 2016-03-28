@@ -4,8 +4,8 @@
 \alias{runJagsSim}
 \title{Simplified RUM Simulation in JAGS}
 \usage{
-runJagsSim(data, q = NULL, adaptSteps = 10, burnInSteps = 40,
-  numSavedSteps = 10, thinSteps = 1)
+runJagsSim(data, q = NULL, model = "simplifiedRUM.jags", adaptSteps = 10,
+  burnInSteps = 40, numSavedSteps = 10, thinSteps = 1)
 }
 \arguments{
 \item{data}{Uses the CDADataSims simplifiedRUM function to generate data}
