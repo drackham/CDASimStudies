@@ -40,7 +40,7 @@ generateExplicitPriorsRUMJags <- function(I, J, K, q){
           write(paste("\t rStar[",i,",",k,"] <- 1", sep=""), file = "explicitPriorsRUM.jags", append=TRUE)
         }
         else{
-          write(paste("\t rStar[",i,",",k,"] ~ dbeta(2,8)", sep=""), file = "explicitPriorsRUM.jags", append=TRUE)
+          write(paste("\t rStar[",i,",",k,"] ~ dunif(0,0.6)", sep=""), file = "explicitPriorsRUM.jags", append=TRUE)
         }
       }
     }
