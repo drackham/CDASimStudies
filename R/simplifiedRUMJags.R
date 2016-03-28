@@ -3,6 +3,13 @@
 #' Fit a simplified RUM model to simulated data and evaluate data-model fit using JAGS.
 #'
 #' @param data Uses the CDADataSims simplifiedRUM function to generate data
+#' @param q Q-matrix
+#' @param jagsModel The specified model for JAGS to use
+#' @param adaptSteps Adapt Steps
+#' @param burnInSteps Burn-in Steps
+#' @param numSavedSteps Saved Steps
+#' @param thinSteps Thin Steps
+#' @param dynamicModel Logical that specifies if runJagsSim should look for the model within the package
 #' @author Dave Rackham \email{ddrackham@gmail.com}
 #' @references \url{http://onlinelibrary.wiley.com/doi/10.1002/j.2333-8504.2008.tb02157.x/abstract}
 #' @keywords hartz roussos RUM JAGS

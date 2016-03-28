@@ -6,7 +6,24 @@
 \usage{
 generateExplicitPriorsRUMJags(I, J, K, q)
 }
-\description{
-Generate the Explicit Priors RUM Jags model
+\arguments{
+\item{I}{Number of items}
+
+\item{J}{Number of examinees}
+
+\item{K}{Number of skills}
+
+\item{q}{Q-matrix}
 }
+\description{
+Dynamically generates explicit priors for the simple RUM model for JAGS.
+}
+\author{
+Dave Rackham \email{ddrackham@gmail.com}
+}
+\references{
+\url{http://onlinelibrary.wiley.com/doi/10.1002/j.2333-8504.2008.tb02157.x/abstract}
+}
+\keyword{JAGS}
+\keyword{RUM}
 
