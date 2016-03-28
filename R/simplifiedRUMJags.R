@@ -10,11 +10,12 @@
 
 runJagsSim <- function(data,
                        q = NULL,
-                       model = "simplifiedRUM.jags",
+                       jagsModel = "simplifiedRUM.jags",
                        adaptSteps = 10,
                        burnInSteps = 40,
                        numSavedSteps = 10,
-                       thinSteps = 1) {
+                       thinSteps = 1,
+                       dynamicModel = TRUE) {
 
   I <- data$I
   J <- data$J
@@ -28,7 +29,10 @@ runJagsSim <- function(data,
     q = q ,
     x = x)
 
-  jagsModel <- system.file("Models", model, package="CDASimStudies") # See: https://stat.ethz.ch/pipermail/r-help/2010-August/247748.html
+  if(dynamicModel == FALSE){
+      jagsModel <- system.file("Models", model, package="CDASimStudies") # See: https://stat.ethz.ch/pipermail/r-help/2010-August/247748.html
+  }
+
   jags.params = c('alpha', 'rStar')
   # jags.params = c('rStar')
 
