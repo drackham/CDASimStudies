@@ -31,7 +31,7 @@ generateExplicitPriorsRUMJags <- function(I, J, K, q){
     for (i in 1:I){
       for (k in 1:K){
         if (q[i,k] == 0){
-          write(paste("\t rStar[",i,",",k,"] ~ dunif(0.95,1)", sep=""), file = "explicitPriorsRUM.jags", append=TRUE)
+          write(paste("\t rStar[",i,",",k,"] <- 1", sep=""), file = "explicitPriorsRUM.jags", append=TRUE)
         }
         else{
           write(paste("\t rStar[",i,",",k,"] ~ dbeta(2,8)", sep=""), file = "explicitPriorsRUM.jags", append=TRUE)
