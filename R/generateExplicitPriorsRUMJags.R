@@ -5,8 +5,8 @@
 #'
 #' @examples
 generateExplicitPriorsRUMJags <- function(I, J, K, q){
-  modelString <- paste("
-model{
+  modelString <- paste("model
+{
   for(i in 1:I){
     for(j in 1:J){
      for(k in 1:K){
