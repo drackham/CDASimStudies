@@ -4,11 +4,26 @@
 \alias{runJagsSim}
 \title{Simplified RUM Simulation in JAGS}
 \usage{
-runJagsSim(data, q = NULL, adaptSteps = 10, burnInSteps = 40,
-  numSavedSteps = 10, thinSteps = 1)
+runJagsSim(data, q = NULL, jagsModel = "simplifiedRUM.jags",
+  adaptSteps = 10, burnInSteps = 40, numSavedSteps = 10, thinSteps = 1,
+  dynamicModel = TRUE)
 }
 \arguments{
 \item{data}{Uses the CDADataSims simplifiedRUM function to generate data}
+
+\item{q}{Q-matrix}
+
+\item{jagsModel}{The specified model for JAGS to use}
+
+\item{adaptSteps}{Adapt Steps}
+
+\item{burnInSteps}{Burn-in Steps}
+
+\item{numSavedSteps}{Saved Steps}
+
+\item{thinSteps}{Thin Steps}
+
+\item{dynamicModel}{Logical that specifies if runJagsSim should look for the model within the package}
 }
 \description{
 Fit a simplified RUM model to simulated data and evaluate data-model fit using JAGS.
