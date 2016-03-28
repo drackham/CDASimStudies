@@ -30,7 +30,7 @@ generateExplicitPriorsRUMJags <- function(I, J, K, q){
   writeLines (modelString, con="explicitPriorsRUM.jags")
     for (i in 1:I){
       for (k in 1:K){
-        if (q[i,k] == 1){
+        if (q[i,k] == 0){
           write(paste("\t rStar[",i,",",k,"] ~ dunif(0.95,1)", sep=""), file = "explicitPriorsRUM.jags", append=TRUE)
         }
         else{
