@@ -23,7 +23,7 @@ generateExplicitPriorsRUMJags <- function(I, J, K, q){
 
   for(i in 1:I){
     for(j in 1:J){
-      x[i,j] ~ dbern(prod(d[i,j,]))
+      x[i,j] ~ dbern(pi[i] * prod(d[i,j,]))
     }
   }
 
