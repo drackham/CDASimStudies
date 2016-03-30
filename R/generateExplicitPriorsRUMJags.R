@@ -32,6 +32,10 @@ generateExplicitPriorsRUMJags <- function(I, J, K, q){
       alpha[j,k] ~ dbeta(3,3)
     }
   }
+
+  for(i in 1:I){
+    pi[i] ~ dbeta(2,2)
+  }
 ")
   writeLines (modelString, con="explicitPriorsRUM.jags")
     for (i in 1:I){
