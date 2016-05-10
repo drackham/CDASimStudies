@@ -70,4 +70,7 @@ generateExplicitPriorsRUMJags <- function(I, J, K, q){
     sc2 ~ dbeta(1,1)
   }"
   )
+
+  # Write the string
+  writeLines (modelString, con="RDINA.jags")
 }
