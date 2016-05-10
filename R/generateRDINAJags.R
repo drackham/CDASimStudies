@@ -10,7 +10,7 @@
 #' @references \url{http://onlinelibrary.wiley.com/doi/10.1002/j.2333-8504.2008.tb02157.x/abstract}
 #' @keywords RUM JAGS
 #' @export
-generateExplicitPriorsRUMJags <- function(I, J, K, q){
+generateRDINAJags <- function(I, J, K, q){
   modelString <- paste(
 "model
   {
