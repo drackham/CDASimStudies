@@ -2,4 +2,5 @@
 
 export(generateExplicitPriorsRUMJags)
 export(generateRDINAJags)
+export(rDINAJagsSim)
 export(runJagsSim)

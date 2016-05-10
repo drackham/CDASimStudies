@@ -15,7 +15,7 @@
 #' @keywords RDINA JAGS
 #' @export
 
-runJagsSim <- function(data,
+rDINAJagsSim <- function(data,
                        q = NULL,
                        jagsModel = "RDINA.jags",
                        adaptSteps = 10,
