@@ -4,19 +4,10 @@
 \alias{generateRDINAJags}
 \title{Generate the RDINA Jags model}
 \usage{
-generateRDINAJags(I, J, K, q)
-}
-\arguments{
-\item{I}{Number of items}
-
-\item{J}{Number of examinees}
-
-\item{K}{Number of skills}
-
-\item{q}{Q-matrix}
+generateRDINAJags()
 }
 \description{
-Dynamically generates explicit priors for the simple RUM model for JAGS.
+Generates the RDINA Jags model for a simple data set
 }
 \author{
 Dave Rackham \email{ddrackham@gmail.com}
@@ -25,5 +16,5 @@ Dave Rackham \email{ddrackham@gmail.com}
 \url{http://onlinelibrary.wiley.com/doi/10.1002/j.2333-8504.2008.tb02157.x/abstract}
 }
 \keyword{JAGS}
-\keyword{RUM}
+\keyword{RDINA}
 

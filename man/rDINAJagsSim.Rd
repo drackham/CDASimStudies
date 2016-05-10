@@ -4,14 +4,12 @@
 \alias{rDINAJagsSim}
 \title{RDINA Simulation in JAGS}
 \usage{
-rDINAJagsSim(data, q = NULL, jagsModel = "RDINA.jags", adaptSteps = 10,
+rDINAJagsSim(data, jagsModel = "RDINA.jags", adaptSteps = 10,
   burnInSteps = 40, numSavedSteps = 10, thinSteps = 1,
   dynamicModel = TRUE)
 }
 \arguments{
-\item{data}{Uses the CDADataSims simplifiedRUM function to generate data}
-
-\item{q}{Q-matrix}
+\item{data}{Uses the rDINAData function to generate data}
 
 \item{jagsModel}{The specified model for JAGS to use}
 

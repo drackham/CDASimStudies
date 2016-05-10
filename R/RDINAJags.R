@@ -2,8 +2,7 @@
 #'
 #' Fit a RDINA model to simulated data and evaluate data-model fit using JAGS.
 #'
-#' @param data Uses the CDADataSims simplifiedRUM function to generate data
-#' @param q Q-matrix
+#' @param data Uses the rDINAData function to generate data
 #' @param jagsModel The specified model for JAGS to use
 #' @param adaptSteps Adapt Steps
 #' @param burnInSteps Burn-in Steps
@@ -16,7 +15,6 @@
 #' @export
 
 rDINAJagsSim <- function(data,
-                       q = NULL,
                        jagsModel = "RDINA.jags",
                        adaptSteps = 10,
                        burnInSteps = 40,
