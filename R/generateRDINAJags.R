@@ -14,55 +14,55 @@ generateRDINAJags <- function(I, J, K, q){
   modelString <- paste(
 "model
   {
-    for (i in 1:N) { # respondents
-      for (j in 1:J) {# items
-        y[i,j] ~ dbern(p[i,j])
+    for (j in 1:J) { # respondents
+      for (i in 1:I) {# items
+        y[j,i] ~ dbern(p[j,i])
       }
     }
 
-    for (i in 1:N) {
-    alpha1[i] ~ dbern(sc1)
-    alpha2[i] ~ dbern(sc2)
+    for (j in 1:J) {
+      alpha1[j] ~ dbern(sc1)
+      alpha2[j] ~ dbern(sc2)
 
-    p[i,1] <- logit(f[1] + d[1] * (alpha1[i])
-    p[i,1] <- logit(f[1] + d[1] * (alpha1[i])
-    p[i,1] <- logit(f[1] + d[1] * (alpha1[i])
-    p[i,1] <- logit(f[1] + d[1] * (alpha1[i])
-    p[i,1] <- logit(f[1] + d[1] * (alpha1[i])
-    p[i,1] <- logit(f[1] + d[1] * (alpha1[i])
-    p[i,1] <- logit(f[1] + d[1] * (alpha1[i])
-    p[i,1] <- logit(f[1] + d[1] * (alpha1[i])
-    p[i,1] <- logit(f[1] + d[1] * (alpha1[i])
-    p[i,1] <- logit(f[1] + d[1] * (alpha1[i])
+      p[j,1] <- logit(f[1] + d[1] * (alpha1[j])
+      p[j,2] <- logit(f[2] + d[2] * (alpha1[j])
+      p[j,3] <- logit(f[3] + d[3] * (alpha1[j])
+      p[j,4] <- logit(f[4] + d[4] * (alpha1[j])
+      p[j,5] <- logit(f[5] + d[5] * (alpha1[j])
+      p[j,6] <- logit(f[6] + d[6] * (alpha1[j])
+      p[j,7] <- logit(f[7] + d[7] * (alpha1[j])
+      p[j,8] <- logit(f[8] + d[8] * (alpha1[j])
+      p[j,9] <- logit(f[9] + d[9] * (alpha1[j])
+      p[j,10] <- logit(f[10] + d[10] * (alpha1[j])
 
-    p[i,1] <- logit(f[1] + d[1] * (alpha2[i])
-    p[i,1] <- logit(f[1] + d[1] * (alpha2[i])
-    p[i,1] <- logit(f[1] + d[1] * (alpha2[i])
-    p[i,1] <- logit(f[1] + d[1] * (alpha2[i])
-    p[i,1] <- logit(f[1] + d[1] * (alpha2[i])
-    p[i,1] <- logit(f[1] + d[1] * (alpha2[i])
-    p[i,1] <- logit(f[1] + d[1] * (alpha2[i])
-    p[i,1] <- logit(f[1] + d[1] * (alpha2[i])
-    p[i,1] <- logit(f[1] + d[1] * (alpha2[i])
-    p[i,1] <- logit(f[1] + d[1] * (alpha2[i])
+      p[j,11] <- logit(f[11] + d[11] * (alpha2[j])
+      p[j,12] <- logit(f[12] + d[12] * (alpha2[j])
+      p[j,13] <- logit(f[13] + d[13] * (alpha2[j])
+      p[j,14] <- logit(f[14] + d[14] * (alpha2[j])
+      p[j,15] <- logit(f[15] + d[15] * (alpha2[j])
+      p[j,16] <- logit(f[16] + d[16] * (alpha2[j])
+      p[j,17] <- logit(f[17] + d[17] * (alpha2[j])
+      p[j,18] <- logit(f[18] + d[18] * (alpha2[j])
+      p[j,19] <- logit(f[19] + d[19] * (alpha2[j])
+      p[j,20] <- logit(f[20] + d[20] * (alpha2[j])
 
-    p[i,1] <- logit(f[1] + d[1] * (alpha1[i] * alpha2[i])
-    p[i,1] <- logit(f[1] + d[1] * (alpha1[i] * alpha2[i])
-    p[i,1] <- logit(f[1] + d[1] * (alpha1[i] * alpha2[i])
-    p[i,1] <- logit(f[1] + d[1] * (alpha1[i] * alpha2[i])
-    p[i,1] <- logit(f[1] + d[1] * (alpha1[i] * alpha2[i])
-    p[i,1] <- logit(f[1] + d[1] * (alpha1[i] * alpha2[i])
-    p[i,1] <- logit(f[1] + d[1] * (alpha1[i] * alpha2[i])
-    p[i,1] <- logit(f[1] + d[1] * (alpha1[i] * alpha2[i])
-    p[i,1] <- logit(f[1] + d[1] * (alpha1[i] * alpha2[i])
-    p[i,1] <- logit(f[1] + d[1] * (alpha1[i] * alpha2[i])
+      p[j,21] <- logjt(f[21] + d[21] * (alpha1[j] * alpha2[j])
+      p[j,22] <- logjt(f[22] + d[22] * (alpha1[j] * alpha2[j])
+      p[j,23] <- logjt(f[23] + d[23] * (alpha1[j] * alpha2[j])
+      p[j,24] <- logjt(f[24] + d[24] * (alpha1[j] * alpha2[j])
+      p[j,25] <- logjt(f[25] + d[25] * (alpha1[j] * alpha2[j])
+      p[j,26] <- logjt(f[26] + d[26] * (alpha1[j] * alpha2[j])
+      p[j,27] <- logjt(f[27] + d[27] * (alpha1[j] * alpha2[j])
+      p[j,28] <- logjt(f[28] + d[28] * (alpha1[j] * alpha2[j])
+      p[j,29] <- logjt(f[29] + d[29] * (alpha1[j] * alpha2[j])
+      p[j,30] <- logjt(f[30] + d[30] * (alpha1[j] * alpha2[j])
 
     }
 
     #priors for RDINA parameters d and f
-    for (j in 1:J) {
-      f[j] ~ dnorm(0, 0.1)
-      d[j] ~ dnorm(0, 0.1) I(0,)
+    for (i in 1:I) {
+      f[i] ~ dnorm(0, 0.1)
+      d[i] ~ dnorm(0, 0.1) I(0,)
     }
 
     #priors for skill class sizes
