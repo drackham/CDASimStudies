@@ -17,7 +17,7 @@
 
 runJagsSim <- function(data,
                        q = NULL,
-                       jagsModel = "simplifiedRUM.jags",
+                       jagsModel = "RDINA.jags",
                        adaptSteps = 10,
                        burnInSteps = 40,
                        numSavedSteps = 10,
@@ -27,7 +27,7 @@ runJagsSim <- function(data,
   I <- data$I
   J <- data$J
   K <- data$K
-  x <- data$xMat
+  x <- data$resp
 
   dataList = list(
     I = I ,
@@ -40,7 +40,7 @@ runJagsSim <- function(data,
     jagsModel <- system.file("Models", model, package="CDASimStudies") # See: https://stat.ethz.ch/pipermail/r-help/2010-August/247748.html
   }
 
-  jags.params = c('alpha', 'rStar', 'pi')
+  jags.params = c('f', 'd', 'alpha1', 'alpha2')
 
   nChains = min(8, parallel::detectCores()-1) # Multi-core support 1 less than num cores, up to 1
 
