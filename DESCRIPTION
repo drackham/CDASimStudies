@@ -1,7 +1,7 @@
 Package: CDASimStudies
 Type: Package
 Title: Cognitive Diagnostic Simulation Studies
-Version: 0.1
+Version: 0.0.1.0
 Date: 2016-02-04
 Author: Dave Rackham
 Maintainer: <ddrackham@gmail.com>
