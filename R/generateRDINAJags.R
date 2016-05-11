@@ -34,7 +34,7 @@ generateRDINAJags <- function(){
 
       p[i,11] <- ilogit(f[11] + d[11] * (alpha2[i]))
       p[i,12] <- ilogit(f[12] + d[12] * (alpha2[i]))
-      p[j,13] <- ilogit(f[13] + d[13] * (alpha2[i]))
+      p[i,13] <- ilogit(f[13] + d[13] * (alpha2[i]))
       p[i,14] <- ilogit(f[14] + d[14] * (alpha2[i]))
       p[i,15] <- ilogit(f[15] + d[15] * (alpha2[i]))
       p[i,16] <- ilogit(f[16] + d[16] * (alpha2[i]))

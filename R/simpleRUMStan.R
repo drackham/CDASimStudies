@@ -1,5 +1,5 @@
 library('devtools')
-install_github("drackham/CDADataSims", ref="9c80f1424da70a5050e42a69eb4886b7ab65d50b") # develop
+install_github("drackham/CDADataSims", ref="develop") # develop
 library('CDADataSims')
 library('coda')
 library('ggmcmc')
