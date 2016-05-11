@@ -58,8 +58,8 @@ generateRDINAJags <- function(){
 
     # priors for RDINA parameters d and f
     for (j in 1:J) {
-      d[j] ~ dbeta(4,2)
-      f[j] ~ dgamma(.5,1)
+      d[j] ~ dnormal(0,.01)
+      f[j] ~ dnormal(0,.01)
     }
 
     # priors for skill class sizes
