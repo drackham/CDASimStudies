@@ -13,7 +13,7 @@ generateRDINAJags <- function(){
   {
     for (i in 1:I) { # examinee
       for (j in 1:J) { # items
-        y[i,k] ~ dbern(p[i,j])
+        y[i,j] ~ dbern(p[i,j])
       }
     }
 
