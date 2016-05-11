@@ -63,8 +63,8 @@ generateRDINAJags <- function(){
     }
 
     # priors for skill class sizes
-    sc1 ~ dbeta(2,2)
-    sc2 ~ dbeta(2,2)
+    sc1 ~ dbeta(1,1)
+    sc2 ~ dbeta(1,1)
   }"
   )
 
