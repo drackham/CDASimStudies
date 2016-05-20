@@ -1,12 +1,21 @@
 # .travis.yml for R CDASimStudies
 
-language: r
-
 # sudo is needed for R on travis-CI. See http://docs.travis-ci.com/user/workers/container-based-infrastructure/
 sudo: required
 
+language: r
+pandoc: false
+
+os:
+  - linux
+  - osx
+
+# Using clang instead of gcc because rstan won't compile on gcc on travis
+env:
+  global:
+    - NOT_CRAN=true CXXFLAGS=-O2 CXX_OLEVEL=2 RCPP_VER=cran CXX=clang++ CPP=clang CC=clang
+
 warnings_are_errors: false
-sudo: required
 
 r_binary_packages:
   - testthat
@@ -16,17 +25,36 @@ r_binary_packages:
 r_packages:
   -rstan
 
-# Using clang instead of gcc because rstan won't compile on gcc on travis
-env:
-  global:
-    - NOT_CRAN=true CXXFLAGS=-O2 CXX_OLEVEL=2 RCPP_VER=cran CXX=clang++ CPP=clang CC=clang
 before_install:
- - echo "options(repos = 'https://cran.r-project.org')" > ~/.Rprofile
- - mkdir -p ~/.R
- - echo 'CXXFLAGS=-O2' > ~/.R/Makevars
- - echo 'CC=clang' >> ~/.R/Makevars
- - echo 'CPP=clang' >> ~/.R/Makevars
- - echo 'CXX=clang++' >> ~/.R/Makevars
+  - echo -e "#\x21/bin/sh\n\$1 &\nPROCESS=\"\$!\"\nwhile :\ndo\n  RESULT=\`ps -p \${PROCESS} -o comm=\`" > wait4.sh
+  - echo -e "  if [ -z \"\${RESULT}\" ]; then\n    wait \${PROCESS}; exit \$?\n  else\n    echo \"-\"; sleep 10\n  fi\ndone\nexit \$?" >> wait4.sh
+  - more wait4.sh
+  - echo -e "Package\x3A mnb_bnm" > DESCRIPTION
+  - chmod 755 wait4.sh
+
+before_script:
+  - Rscript -e "install.packages(c('inline', 'Rcpp', 'coda', 'BH', 'RcppEigen', 'RInside', 'RUnit', 'ggplot2', 'gridExtra'), repos='http://cran.rstudio.com')"
+  - git config -f .gitmodules submodule.stan.branch ${STAN_BRANCH}
+  - git config -f .gitmodules submodule.StanHeaders/inst/include/mathlib.branch ${STAN_MATH_BRANCH}
+  - git submodule update --remote
+  - R CMD build StanHeaders/
+  - R CMD INSTALL `find StanHeaders*.tar.gz`
+  - if [[ $TRAVIS_OS_NAME = 'osx' ]] ; then sudo /usr/texbin/tlmgr install verbatimbox readarray ifnextok multirow fancyvrb url titlesec booktabs; fi
+  - if [[ $TRAVIS_OS_NAME != 'osx' ]] ; then tlmgr install verbatimbox readarray ifnextok; fi
+  - if [[ $TRAVIS_OS_NAME = "osx" ]] ; then  brew install ccache; brew link ccache; fi
+  - echo "CXX = `which ccache` `R CMD config CXX`" >> ./rstan/R_Makevars
+  - echo "CXXFLAGS = `R CMD config CXXFLAGS` -pedantic -g0" >> ./rstan/R_Makevars
+  - export CLANG_EXTRA_ARG=""
+  - if [[ $CXX = "clang++" ]] ;  then export CLANG_EXTRA_ARG=" -Qunused-arguments -fcolor-diagnostics " ; fi
+  - if [[ $RCPP_VER = 'github' ]]; then R -q -e "options(repos = getCRANmirrors()[1,'URL']); library(devtools); install_github('Rcpp', 'Rcppcore')"; fi
+  - echo ${CXX}
+  - echo ${CLANG_EXTRA_ARG}
+  - sed -i.bak "s/ g++/ ${CXX}${CLANG_EXTRA_ARG}/" ./rstan/R_Makevars
+  - sed -i.bak "s/O[0-3]/O$CXX_OLEVEL/" ./rstan/R_Makevars
+  - rm ./rstan/R_Makevars.bak
+  - more ./rstan/R_Makevars
+  - mkdir -p ~/.R/; cat ./rstan/R_Makevars > ~/.R/Makevars
+  - more ~/.R/Makevars
 
 notifications:
   email:
