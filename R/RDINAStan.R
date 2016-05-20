@@ -1,17 +1,18 @@
 library('devtools')
-install_github("drackham/CDADataSims", ref="uniqueDF")
+install_github("drackham/CDADataSims", ref="develop")
 library('CDADataSims')
 library('coda')
 library('ggmcmc')
 library('parallel')
 library('rstan')
-# library("shinystan")
-# source("/Users/Dave/dev/EffectiveThetaBIN/Helpers/rootMeanSquaredDifference.R")
+library("shinystan")
+source("/Users/Dave/dev/EffectiveThetaBIN/Helpers/rootMeanSquaredDifference.R")
 
 rstan_options(auto_write = TRUE)
 options(mc.cores = parallel::detectCores())
 
 data <- rDINA(100)
+q <- simpleQ()
 
 I <- data$I
 J <- data$J
@@ -27,7 +28,7 @@ ptm <- proc.time()
 fit <- stan(file='RDINA.stan',
                     data = list(I=I,J=J,y=y),
                     cores = 5,
-                    iter = 1500,
+                    iter = 2000,
                     chains = 5,
                     control = list(max_treedepth = 15)
             )
@@ -35,32 +36,34 @@ fit <- stan(file='RDINA.stan',
 duration <- proc.time() - ptm
 duration
 
+save(fit, file="stanFit.R")
+
 print(fit)
 
 post <- extract(fit, permuted = TRUE) # return a list of arrays
 
 save(post, file="stanOut.R")
 
-# my_sso <- launch_shinystan(fit)
+my_sso <- launch_shinystan(fit)
 
-# dHat <- colMeans(post$dHat)
-# simD <- data$d
-#
-# plot(simD, dHat, xlim=c(0,18), ylim=c(0,18))
-# abline(a=0,b=1)
-#
-# rmsd <- rootMeanSquaredDifference(simD,dHat)
-# mean(rmsd)
-# plot(density(rmsd)) #.820549
-#
-# fHat <- colMeans(post$fHat)
-# simF <- data$f
-#
-# plot(simF, fHat, xlim=c(-10,0), ylim=c(-10,0))
-# abline(a=0,b=1)
-#
-# rmsd <- rootMeanSquaredDifference(simF,fHat)
-# mean(rmsd)
-# plot(density(rmsd)) #.369
-#
-# launch_shinystan(my_sso)
+dHat <- colMeans(post$dHat)
+simD <- data$d
+
+plot(simD, dHat, xlim=c(0,18), ylim=c(0,18))
+abline(a=0,b=1)
+
+rmsd <- rootMeanSquaredDifference(simD,dHat)
+mean(rmsd)
+plot(density(rmsd)) #.820549
+
+fHat <- colMeans(post$fHat)
+simF <- data$f
+
+plot(simF, fHat, xlim=c(-10,0), ylim=c(-10,0))
+abline(a=0,b=1)
+
+rmsd <- rootMeanSquaredDifference(simF,fHat)
+mean(rmsd)
+plot(density(rmsd)) #.369
+
+launch_shinystan(my_sso)
