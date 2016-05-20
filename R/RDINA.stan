@@ -6,16 +6,16 @@ data {
 }
 
 parameters {
-  real fHat[J];              // intercept or baseline probability
-  real dHat[J];              // main effect of skill mastery
+  real<lower=-20, upper=20> fHat[J];              // intercept or baseline probability
+  real<lower=-20, upper=20> dHat[J];              // main effect of skill mastery
   real<lower=0, upper=1> alpha1[I];
   real<lower=0, upper=1> alpha2[I];
-  real <lower=0> a1[I];
-  real <lower=0> b1[I];
-  real <lower=0> a2[I];
-  real <lower=0> b2[I];
-}
 
+  real <lower=0, upper=50> a1[I];
+  real <lower=0, upper=50> b1[I];
+  real <lower=0, upper=50> a2[I];
+  real <lower=0, upper=50> b2[I];
+}
 
 model {
   # priors for continous skill mastery
@@ -24,19 +24,16 @@ model {
     alpha2[i] ~ beta(a2[i],b2[i]);
   }
 
-//   a1 ~ cauchy(0,5);
-//   b1 ~ cauchy(0,5);
-  a1 ~ gamma(2,2);
-  b1 ~ gamma(2,2);
+  a1 ~ cauchy(0,5);
+  b1 ~ cauchy(0,5);
 
-//   a2 ~ cauchy(0,5);
-//   b2 ~ cauchy(0,5);
-  a2 ~ gamma(2,2);
-  b2 ~ gamma(2,2);
+  a2 ~ cauchy(0,5);
+  b2 ~ cauchy(0,5);
 
   # priors for RDINA parameters d and f
   dHat ~ normal(7,2);
   fHat ~ normal(-3,2);
+
 
   for (i in 1:I){
     y[i,1] ~ bernoulli_logit(fHat[1] + (dHat[1] * alpha1[i]));

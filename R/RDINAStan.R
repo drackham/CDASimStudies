@@ -5,29 +5,62 @@ library('coda')
 library('ggmcmc')
 library('parallel')
 library('rstan')
-library("shinystan")
+# library("shinystan")
+# source("/Users/Dave/dev/EffectiveThetaBIN/Helpers/rootMeanSquaredDifference.R")
 
-data <- rDINA()
-q <- simpleQ()
+rstan_options(auto_write = TRUE)
+options(mc.cores = parallel::detectCores())
+
+data <- rDINA(100)
 
 I <- data$I
 J <- data$J
-K <- data$K
 y <- data$resp
 dSim <- data$d
 fSim <- data$f
 
-setwd("~/dev/CDASimStudies/R")
+# setwd("~/dev/CDASimStudies/R")
+setwd("/home/drackham/RDINA-STAN")
+
+ptm <- proc.time()
 
 fit <- stan(file='RDINA.stan',
-                    data=list(I=I,J=J,y=y),
-                    init=0,
-                    seed = 23,
-                    warmup = 4000,
-                    cores = 3,
-                    iter=5000,
-                    chains=3)
+                    data = list(I=I,J=J,y=y),
+                    cores = 5,
+                    iter = 1500,
+                    chains = 5,
+                    control = list(max_treedepth = 15)
+            )
+
+duration <- proc.time() - ptm
+duration
 
 print(fit)
 
-launch_shinystan(fit)
+post <- extract(fit, permuted = TRUE) # return a list of arrays
+
+save(post, file="stanOut.R")
+
+# my_sso <- launch_shinystan(fit)
+
+# dHat <- colMeans(post$dHat)
+# simD <- data$d
+#
+# plot(simD, dHat, xlim=c(0,18), ylim=c(0,18))
+# abline(a=0,b=1)
+#
+# rmsd <- rootMeanSquaredDifference(simD,dHat)
+# mean(rmsd)
+# plot(density(rmsd)) #.820549
+#
+# fHat <- colMeans(post$fHat)
+# simF <- data$f
+#
+# plot(simF, fHat, xlim=c(-10,0), ylim=c(-10,0))
+# abline(a=0,b=1)
+#
+# rmsd <- rootMeanSquaredDifference(simF,fHat)
+# mean(rmsd)
+# plot(density(rmsd)) #.369
+#
+# launch_shinystan(my_sso)
