@@ -38,4 +38,4 @@ Dave Rackham ddrackham@gmail.com
 
 ## License
 
-CC-BY-SA
+MIT License (see License.txt)
