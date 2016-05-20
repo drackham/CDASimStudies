@@ -38,4 +38,4 @@ Dave Rackham ddrackham@gmail.com
 
 ## License
 
-TBD
+CC-BY-SA
