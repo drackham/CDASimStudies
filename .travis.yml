@@ -1,24 +1,16 @@
 language: r
 
-# sudo is needed for R on travis-CI. See http://docs.travis-ci.com/user/workers/container-based-infrastructure/
 sudo: required
 
-# Be strict when checking our package
 warnings_are_errors: true
 
-# install binary packages to speed up testing
-# list suggested packages here to since they
-# aren't installed automatically
 r_binary_packages:
  - testthat
- # won't compile under clang?
  - runjags
 
 r_github_packages:
- - mjskay/tidybayes
+ - drackham/CDADataSims
 
-# rstan (under suggests) must be installed
-# manually, but isn't in the binary repo
 r_packages:
  - rstan
 
@@ -28,6 +20,7 @@ r_packages:
 env:
   global:
     - NOT_CRAN=true CXXFLAGS=-O2 CXX_OLEVEL=2 RCPP_VER=cran CXX=clang++ CPP=clang CC=clang
+
 before_install:
  - echo "options(repos = c(CRAN='http://cran.rstudio.com'))" > ~/.Rprofile
  - mkdir -p ~/.R
