@@ -11,6 +11,7 @@ sudo: required
 r_binary_packages:
   - testthat
   - runjags
+  - parallel
 
 r_packages:
   -rstan
@@ -20,7 +21,7 @@ env:
   global:
     - NOT_CRAN=true CXXFLAGS=-O2 CXX_OLEVEL=2 RCPP_VER=cran CXX=clang++ CPP=clang CC=clang
 before_install:
- - echo "options(repos = c(CRAN='http://cran.rstudio.com'))" > ~/.Rprofile
+ - echo "options(repos = 'https://cran.r-project.org')" > ~/.Rprofile
  - mkdir -p ~/.R
  - echo 'CXXFLAGS=-O2' > ~/.R/Makevars
  - echo 'CC=clang' >> ~/.R/Makevars
