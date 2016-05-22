@@ -5,8 +5,7 @@
 \title{RDINA Simulation in JAGS}
 \usage{
 rDINAJagsSim(data, jagsModel = "RDINA.jags", adaptSteps = 10,
-  burnInSteps = 40, numSavedSteps = 10, thinSteps = 1,
-  dynamicModel = TRUE)
+  burnInSteps = 40, numSavedSteps = 10, thinSteps = 1)
 }
 \arguments{
 \item{data}{Uses the rDINAData function to generate data}
@@ -20,8 +19,6 @@ rDINAJagsSim(data, jagsModel = "RDINA.jags", adaptSteps = 10,
 \item{numSavedSteps}{Saved Steps}
 
 \item{thinSteps}{Thin Steps}
-
-\item{dynamicModel}{Logical that specifies if runJagsSim should look for the model within the package}
 }
 \description{
 Fit a RDINA model to simulated data and evaluate data-model fit using JAGS.
