@@ -15,6 +15,7 @@
 
 stanSim <- function(data, q, wd, cores, iter, chains ){
 
+  model <- system.file("Models", "R-DINA.stan", package="CDASimStudies") # See: https://stat.ethz.ch/pipermail/r-help/2010-August/247748.html
   data <- data
   q <- q
 
@@ -26,7 +27,7 @@ stanSim <- function(data, q, wd, cores, iter, chains ){
 
   setwd(wd)
 
-  rstan::stan(file='RDINA.stan',
+  rstan::stan(file= model,
                       data = list(I=I,J=J,y=y),
                       cores = cores,
                       iter = iter,
