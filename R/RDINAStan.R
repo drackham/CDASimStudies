@@ -27,14 +27,14 @@ stanSim <- function(data, q, wd, cores, iter, chains ){
   fSim <- data$f
 
   # Inits
-  fHatInit <- c(rep(0, J))
-  dHatInit <- c(rep(0, J))
-  alpha1Init <- c(rep(0.001, I))
-  alpha2Init <- c(rep(0.001, I))
-  a1Init <- c(rep(0.001, I))
-  a2Init <- c(rep(0.001, I))
-  b1Init <- c(rep(0.001, I))
-  b2Init <- c(rep(0.001, I))
+  fHatInit <- rnorm(J, 7, 2)
+  dHatInit <- rnorm(J, -3, 2)
+  alpha1Init <- rbeta(I, 1, 1)
+  alpha2Init <- rbeta(I, 1, 1)
+  a1Init <- rnorm(I, 1, 2)
+  a2Init <- rnorm(I, 1, 2)
+  b1Init <- rnorm(I, 1, 2)
+  b2Init <- rnorm(I, 1, 2)
 
   # function form 2 with an argument named `chain_id`
   # This is copied from ?stan
