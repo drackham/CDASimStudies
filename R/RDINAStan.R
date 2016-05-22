@@ -14,8 +14,6 @@
 #'
 
 stanSim <- function(data, q, wd, cores, iter, chains ){
-  rstan::rstan_options(auto_write = TRUE)
-  options(mc.cores = parallel::detectCores())
 
   data <- data
   q <- q
