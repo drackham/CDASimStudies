@@ -31,10 +31,10 @@ stanSim <- function(data, q, wd, cores, iter, chains ){
   dHatInit <- rnorm(J, -3, 2)
   alpha1Init <- rbeta(I, 1, 1)
   alpha2Init <- rbeta(I, 1, 1)
-  a1Init <- rnorm(I, 1, 2)
-  a2Init <- rnorm(I, 1, 2)
-  b1Init <- rnorm(I, 1, 2)
-  b2Init <- rnorm(I, 1, 2)
+  a1Init <- rgamma(I, 4, 4)
+  a2Init <- rgamma(I, 4, 4)
+  b1Init <- rgamma(I, 4, 4)
+  b2Init <- rgamma(I, 4, 4)
 
   # function form 2 with an argument named `chain_id`
   # This is copied from ?stan
