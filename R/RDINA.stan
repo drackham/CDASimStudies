@@ -1,7 +1,6 @@
 data {
   int<lower=1> I;           // number of examinees
   int<lower=1> J;           // number of items
-  int<lower=1> K;           // number of skills
   int<lower=0, upper=1> y[I,J];            // correctness of examinee on item
 }
 
