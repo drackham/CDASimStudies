@@ -14,7 +14,7 @@
 #'
 
 stanSim <- function(data, q, wd, cores, iter, chains ){
-  rstan_options(auto_write = TRUE)
+  rstan::rstan_options(auto_write = TRUE)
   options(mc.cores = parallel::detectCores())
 
   data <- data
@@ -28,7 +28,7 @@ stanSim <- function(data, q, wd, cores, iter, chains ){
 
   setwd(wd)
 
-  stan(file='RDINA.stan',
+  rstan::stan(file='RDINA.stan',
                       data = list(I=I,J=J,y=y),
                       cores = cores,
                       iter = iter,
