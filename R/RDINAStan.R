@@ -1,69 +1,60 @@
-library('devtools')
-install_github("drackham/CDADataSims", ref="develop")
-library('CDADataSims')
-library('coda')
-library('ggmcmc')
-library('parallel')
-library('rstan')
-library("shinystan")
-source("/Users/Dave/dev/EffectiveThetaBIN/Helpers/rootMeanSquaredDifference.R")
+#' R-DINA Simulation in STAN
+#'
+#' Fit a R-DINA model to simulated data using STAN
+#'
+#' @param data Dataset to be used
+#' @param q Q-matrix to be sued
+#' @param wd Desired working directory (string)
+#' @param cores Number of cores to use
+#' @param iter Number of iterations
+#' @param chains Number of chains
+#' @author Dave Rackham \email{ddrackham@gmail.com}
+#' @keywords R-DINA STAN
+#' @export
+#'
 
-rstan_options(auto_write = TRUE)
-options(mc.cores = parallel::detectCores())
+stanSim <- function(data, q, wd, cores, iter, chains ){
+  setwd(wd)
 
-data <- rDINA(100)
-q <- simpleQ()
+  model <- system.file("Models", "R-DINA.stan", package="CDASimStudies") # See: https://stat.ethz.ch/pipermail/r-help/2010-August/247748.html
+  data <- data
+  q <- q
 
-I <- data$I
-J <- data$J
-y <- data$resp
-dSim <- data$d
-fSim <- data$f
+  I <- data$I
+  J <- data$J
+  y <- data$resp
+  dSim <- data$d
+  fSim <- data$f
 
-# setwd("~/dev/CDASimStudies/R")
-setwd("/home/drackham/RDINA-STAN")
+  # Inits
+  fHatInit <- rnorm(J, 7, 2)
+  dHatInit <- rnorm(J, -3, 2)
+  alpha1Init <- rbeta(I, 1, 1)
+  alpha2Init <- rbeta(I, 1, 1)
+  a1Init <- rgamma(I, 4, 4)
+  a2Init <- rgamma(I, 4, 4)
+  b1Init <- rgamma(I, 4, 4)
+  b2Init <- rgamma(I, 4, 4)
 
-ptm <- proc.time()
+  # function form 2 with an argument named `chain_id`
+  # This is copied from ?stan
+  initf2 <- function(chain_id = 1) {
+    list(fHat = fHatInit, dHat = dHatInit, alpha1 = alpha1Init,
+         alpha2 = alpha2Init, a1 = a1Init, a2 = a2Init,
+         b1 = b1Init, b2 = b2Init)
+  }
 
-fit <- stan(file='RDINA.stan',
-                    data = list(I=I,J=J,y=y),
-                    cores = 5,
-                    iter = 2000,
-                    chains = 5,
-                    control = list(max_treedepth = 15)
-            )
+  # generate a list of lists to specify initial values
+  # Copied from ?stan
+  init_ll <- lapply(1:chains, function(id) initf2(chain_id = id))
 
-duration <- proc.time() - ptm
-duration
-
-save(fit, file="stanFit.R")
-
-print(fit)
-
-post <- extract(fit, permuted = TRUE) # return a list of arrays
-
-save(post, file="stanOut.R")
-
-my_sso <- launch_shinystan(fit)
-
-dHat <- colMeans(post$dHat)
-simD <- data$d
-
-plot(simD, dHat, xlim=c(0,18), ylim=c(0,18))
-abline(a=0,b=1)
-
-rmsd <- rootMeanSquaredDifference(simD,dHat)
-mean(rmsd)
-plot(density(rmsd)) #.820549
-
-fHat <- colMeans(post$fHat)
-simF <- data$f
-
-plot(simF, fHat, xlim=c(-10,0), ylim=c(-10,0))
-abline(a=0,b=1)
-
-rmsd <- rootMeanSquaredDifference(simF,fHat)
-mean(rmsd)
-plot(density(rmsd)) #.369
-
-launch_shinystan(my_sso)
+  rstan::stan(file= model,
+                      data = list(I=I,J=J,y=y),
+                      cores = cores,
+                      iter = iter,
+                      chains = chains,
+                      init = init_ll,
+                      verbose=TRUE,
+                      control = list(max_treedepth = 15)
+              )
+}

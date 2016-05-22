@@ -8,7 +8,6 @@
 #' @param burnInSteps Burn-in Steps
 #' @param numSavedSteps Saved Steps
 #' @param thinSteps Thin Steps
-#' @param dynamicModel Logical that specifies if runJagsSim should look for the model within the package
 #' @author Dave Rackham \email{ddrackham@gmail.com}
 #' @references \url{http://onlinelibrary.wiley.com/doi/10.1002/j.2333-8504.2008.tb02157.x/abstract}
 #' @keywords RDINA JAGS
