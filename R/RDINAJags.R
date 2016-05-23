@@ -4,6 +4,7 @@
 #'
 #' @param data Uses the rDINAData function to generate data
 #' @param jagsModel The specified model for JAGS to use
+#' @param maxCores Maximum number of cores allowed
 #' @param adaptSteps Adapt Steps
 #' @param burnInSteps Burn-in Steps
 #' @param numSavedSteps Saved Steps

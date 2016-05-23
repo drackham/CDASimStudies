@@ -4,13 +4,15 @@
 \alias{rDINAJagsSim}
 \title{RDINA Simulation in JAGS}
 \usage{
-rDINAJagsSim(data, jagsModel = "RDINA.jags", adaptSteps = 10,
-  burnInSteps = 40, numSavedSteps = 10, thinSteps = 1)
+rDINAJagsSim(data, jagsModel = "RDINA.jags", maxCores = 3,
+  adaptSteps = 10, burnInSteps = 40, numSavedSteps = 10, thinSteps = 1)
 }
 \arguments{
 \item{data}{Uses the rDINAData function to generate data}
 
 \item{jagsModel}{The specified model for JAGS to use}
+
+\item{maxCores}{Maximum number of cores allowed}
 
 \item{adaptSteps}{Adapt Steps}
 
