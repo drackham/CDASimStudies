@@ -18,14 +18,16 @@ generateRDINAJags <- function(){
     }
 
     for (i in 1:I) {
-      alpha1[i] ~ beta(a1[i],b1[i])
-      alpha2[i] ~ beta(a2[i],b2[i])
+      alpha1[i] ~ dbeta(a1[i],b1[i])
+      alpha2[i] ~ dbeta(a2[i],b2[i])
+		
+			# hyperpriors for alpha1 and alpha2
 
-      a1 ~ gamma(2,2)
-      b1 ~ gamma(2,2)
-
-      a2 ~ gamma(2,2)
-      b2 ~ gamma(2,2)
+			a1[i] ~ dgamma(2,2)
+			b1[i] ~ dgamma(2,2)
+			
+			a2[i] ~ dgamma(2,2)
+			b2[i] ~ dgamma(2,2)
 
       p[i,1] <- ilogit(fHat[1] + dHat[1] * (alpha1[i]))
       p[i,2] <- ilogit(fHat[2] + dHat[2] * (alpha1[i]))

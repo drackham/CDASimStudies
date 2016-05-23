@@ -30,7 +30,7 @@ rDINAJagsSim <- function(data,
     J = J ,
     y = y)
 
-  jags.params = c('f', 'd', 'alpha1', 'alpha2')
+  jags.params = c('fHat', 'dHat', 'alpha1', 'alpha2')
 
   nChains = min(8, parallel::detectCores()-1) # Multi-core support 1 less than num cores, up to 1
 
