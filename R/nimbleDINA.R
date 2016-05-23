@@ -60,15 +60,28 @@ model <- nimbleCode({
   sc1 ~ dbeta(1,1)
   sc2 ~ dbeta(1,1)
 })
-constants <- list (I = 100, J = 30)
-data <- rDINA(100)
+
+constants <- list (I = 10, J = 30)
+data <- rDINASimpleQ(10)
 dataList <- list(y=data$resp)
 
-dinaModel <- nimbleModel(code=model, constants=constants, data=dataList, check = FALSE)
+
+rDINAInits <- list(alpha1 = rep(0.5, constants$I), alpha2 = rep(0.5, constants$I),
+                  d = rep(7, constants$J), f = rep(-3, constants$J), sc1 = 0.5, sc2 = 0.5
+                  )
+
+
+dinaModel <- nimbleModel(code = model, name = 'dinaModel', constants=constants,
+                          data = dataList, inits = rDINAInits, check = FALSE)
 
 dinaMCMC <- buildMCMC(dinaModel)
-compiledDinaModel <- compileNimble(dinaModel)
-compiledDinaMCMC <- compileNimble(compiledDinaModel, project = dinaModel)
+# dinaMCMC$run(10)
 
-compiledDinaMCMC$run(1000)
+compiledDinaModel <- compileNimble(dinaModel)
+compiledDinaMCMC <- compileNimble(dinaMCMC, project = dinaModel)
+
+compiledDinaMCMC$run(100)
+
+MCMCsamples <- as.matrix(compiledDinaMCMC$mvSamples)
+plot(MCMCsamples[ , 'f[1]'], type = 'l', xlab = 'iteration',  ylab = expression(alpha1))
 
