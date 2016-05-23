@@ -18,8 +18,8 @@ generateRDINAJagsNonHierachical <- function(){
     }
 
     for (i in 1:I) {
-      alpha1[i] ~ dbeta(sc1)
-      alpha2[i] ~ dbeta(sc2)
+      alpha1[i] ~ dbern(sc1)
+      alpha2[i] ~ dbern(sc2)
 
       p[i,1] <- ilogit(fHat[1] + dHat[1] * (alpha1[i]))
       p[i,2] <- ilogit(fHat[2] + dHat[2] * (alpha1[i]))
