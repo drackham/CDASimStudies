@@ -15,6 +15,7 @@
 
 rDINAJagsSim <- function(data,
                        jagsModel = "RDINA.jags",
+											 maxCores = 3,
                        adaptSteps = 10,
                        burnInSteps = 40,
                        numSavedSteps = 10,
@@ -32,7 +33,7 @@ rDINAJagsSim <- function(data,
 
   jags.params = c('fHat', 'dHat', 'alpha1', 'alpha2')
 
-  nChains = min(8, parallel::detectCores()-1) # Multi-core support 1 less than num cores, up to 8
+  nChains = min(maxCores, parallel::detectCores()-1) # Multi-core support 1 less than num cores, up to 8
 
   inits <- vector("list", nChains)
 
