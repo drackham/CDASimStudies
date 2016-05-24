@@ -3,3 +3,6 @@
 
 ## Ignore travis config file
 ^\.travis\.yml$
+
+## Ignore license file
+License.txt
