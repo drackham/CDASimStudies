@@ -16,8 +16,6 @@ STAN_IRT_1PL(data, wd, cores, iter, chains)
 \item{iter}{Number of iterations}
 
 \item{chains}{Number of chains}
-
-\item{q}{Q-matrix to be sued}
 }
 \description{
 Fit a 1PL model to simulated data using STAN

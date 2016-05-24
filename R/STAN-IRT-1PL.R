@@ -3,7 +3,6 @@
 #' Fit a 1PL model to simulated data using STAN
 #'
 #' @param data Dataset to be used
-#' @param q Q-matrix to be sued
 #' @param wd Desired working directory (string)
 #' @param cores Number of cores to use
 #' @param iter Number of iterations
