@@ -25,3 +25,29 @@ NULL
 #' @format A data list of responses, locations etc.
 NULL
 
+#' @docType data
+#' @name R_DINA_SimpleQ.100
+#' @title R-DINA Simple Q 100 Data
+#' @usage data(R_DINA_SimpleQ.100)
+#' @description This data set represents simulated R-DINA Simple Q for 100 examinees
+#' @author Dave Rackham May 2016
+#' @format A data list of responses, locations etc.
+NULL
+
+#' @docType data
+#' @name R_DINA_SimpleQ.500
+#' @title R-DINA Simple Q 500 Data
+#' @usage data(R_DINA_SimpleQ.500)
+#' @description This data set represents simulated R-DINA Simple Q for 500 examinees
+#' @author Dave Rackham May 2016
+#' @format A data list of responses, locations etc.
+NULL
+
+#' @docType data
+#' @name R_DINA_SimpleQ.1000
+#' @title R-DINA Simple Q 1000 Data
+#' @usage data(R_DINA_SimpleQ.1000)
+#' @description This data set represents simulated R-DINA Simple Q for 1000 examinees
+#' @author Dave Rackham May 2016
+#' @format A data list of responses, locations etc.
+NULL
