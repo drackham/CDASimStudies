@@ -2,6 +2,7 @@
 
 export(STAN_IRT_1PL)
 export(generateExplicitPriorsRUMJags)
+export(generateHO_R_DINA_Jags)
 export(generateRDINAJags)
 export(generateRDINAJagsNonHierachical)
 export(rDINAJagsSim)
