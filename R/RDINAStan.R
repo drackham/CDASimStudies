@@ -13,10 +13,10 @@
 #' @export
 #'
 
-stanSim <- function(data, q, wd, cores, iter, chains ){
+stanSim <- function(model = "R-DINA-Non-Logit.stan", data, q, wd, cores, iter, chains ){
   setwd(wd)
 
-  model <- system.file("Models", "R-DINA.stan", package="CDASimStudies") # See: https://stat.ethz.ch/pipermail/r-help/2010-August/247748.html
+  model <- system.file("Models", model, package="CDASimStudies") # See: https://stat.ethz.ch/pipermail/r-help/2010-August/247748.html
   data <- data
   q <- q
 
@@ -48,13 +48,13 @@ stanSim <- function(data, q, wd, cores, iter, chains ){
   # Copied from ?stan
   init_ll <- lapply(1:chains, function(id) initf2(chain_id = id))
 
-  rstan::stan(file= model,
+  rstan::stan(file = model,
                       data = list(I=I,J=J,y=y),
                       cores = cores,
                       iter = iter,
                       chains = chains,
                       init = init_ll,
-                      verbose=TRUE,
+                      verbose = TRUE,
                       control = list(max_treedepth = 15)
               )
 }
