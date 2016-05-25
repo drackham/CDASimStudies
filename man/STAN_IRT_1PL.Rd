@@ -4,7 +4,7 @@
 \alias{STAN_IRT_1PL}
 \title{IRT 1PL  Simulation in STAN}
 \usage{
-STAN_IRT_1PL(data, wd, cores, iter, chains)
+STAN_IRT_1PL(model = "IRT-1PL.stan", data, wd, cores, iter, chains)
 }
 \arguments{
 \item{data}{Dataset to be used}

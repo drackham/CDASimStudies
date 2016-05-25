@@ -9,7 +9,7 @@ r_binary_packages:
  - runjags
 
 r_github_packages:
- - drackham/CDADataSims
+ - drackham/dcmdata
 
 r_packages:
  - rstan

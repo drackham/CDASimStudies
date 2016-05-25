@@ -2,6 +2,7 @@
 #'
 #' Fit a 1PL model to simulated data using STAN
 #'
+#' @oaram model Model to be used. Must be available in working directory
 #' @param data Dataset to be used
 #' @param wd Desired working directory (string)
 #' @param cores Number of cores to use
@@ -12,10 +13,10 @@
 #' @export
 #'
 
-STAN_IRT_1PL <- function(data, wd, cores, iter, chains ){
+STAN_IRT_1PL <- function(model = "IRT-1PL.stan", data, wd, cores, iter, chains ){
   setwd(wd)
 
-  # model <- system.file("Models", "IRT-1PL.stan", package="CDASimStudies") # See: https://stat.ethz.ch/pipermail/r-help/2010-August/247748.html
+  # model <- system.file("Models", "IRT-1PL.stan", package="dcms") # See: https://stat.ethz.ch/pipermail/r-help/2010-August/247748.html
   model <- "IRT-1PL.stan"
   data <- data
 
@@ -27,8 +28,8 @@ STAN_IRT_1PL <- function(data, wd, cores, iter, chains ){
   y <- data$y
 
   # Inits
-  thetaInit <- rnorm(I, 0, 1)
-  betaInit <- rnorm(J, 0, 1)
+  thetaInit <- stats::rnorm(I, 0, 1)
+  betaInit <- stats::rnorm(J, 0, 1)
 
   # function form 2 with an argument named `chain_id`
   # This is copied from ?stan

@@ -1,13 +1,13 @@
 ## Master
-[![Travis-CI Build Status](https://travis-ci.org/drackham/CDASimStudies.svg?branch=master)](https://travis-ci.org/drackham/CDASimStudies)
+[![Travis-CI Build Status](https://travis-ci.org/drackham/dcms.svg?branch=master)](https://travis-ci.org/drackham/dcms)
 
 ## Develop
-[![Travis-CI Build Status](https://travis-ci.org/drackham/CDASimStudies.svg?branch=develop)](https://travis-ci.org/drackham/CDASimStudies)
+[![Travis-CI Build Status](https://travis-ci.org/drackham/dcms.svg?branch=develop)](https://travis-ci.org/drackham/dcms)
 
 
 ## Synopsis
 
-This package leverages the heavy lifting done by CDADataSims to then fit various CDA models to the simulated data. The intention is to create wrappers around each model type so that the final script which executes the model can be much cleaner/simpler. 
+This package leverages the heavy lifting done by dcmdata to then fit various CDA models to the simulated data. The intention is to create wrappers around each model type so that the final script which executes the model can be much cleaner/simpler. 
 
 Currently there is support for the following models (in various states of effectiveness!):
 * RUM model using explicit priors in JAGS

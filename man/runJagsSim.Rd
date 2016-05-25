@@ -9,7 +9,7 @@ runJagsSim(data, q = NULL, jagsModel = "simplifiedRUM.jags",
   dynamicModel = TRUE)
 }
 \arguments{
-\item{data}{Uses the CDADataSims simplifiedRUM function to generate data}
+\item{data}{Uses the dcmdata simplifiedRUM function to generate data}
 
 \item{q}{Q-matrix}
 

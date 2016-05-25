@@ -17,7 +17,7 @@
 stanSim <- function(model = "R-DINA-Non-Logit.stan", data, q, wd, cores, iter, chains ){
   setwd(wd)
 
-  model <- system.file("Models", model, package="CDASimStudies") # See: https://stat.ethz.ch/pipermail/r-help/2010-August/247748.html
+  model <- system.file("Models", model, package="dcms") # See: https://stat.ethz.ch/pipermail/r-help/2010-August/247748.html
   data <- data
   q <- q
 

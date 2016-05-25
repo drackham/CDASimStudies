@@ -2,7 +2,7 @@
 #'
 #' Fit a simplified RUM model to simulated data and evaluate data-model fit using JAGS.
 #'
-#' @param data Uses the CDADataSims simplifiedRUM function to generate data
+#' @param data Uses the dcmdata simplifiedRUM function to generate data
 #' @param q Q-matrix
 #' @param jagsModel The specified model for JAGS to use
 #' @param adaptSteps Adapt Steps
@@ -37,7 +37,7 @@ runJagsSim <- function(data,
     x = x)
 
   if(dynamicModel == FALSE){
-      jagsModel <- system.file("Models", model, package="CDASimStudies") # See: https://stat.ethz.ch/pipermail/r-help/2010-August/247748.html
+      jagsModel <- system.file("Models", jagsModel, package="dcms") # See: https://stat.ethz.ch/pipermail/r-help/2010-August/247748.html
   }
 
   jags.params = c('alpha', 'rStar', 'pi')
