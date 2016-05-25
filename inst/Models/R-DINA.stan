@@ -5,8 +5,8 @@ data {
 }
 
 parameters {
-  real<lower=-10, upper=5> fHat[J];              // intercept or baseline probability
-  real<lower=-5, upper=15> dHat[J];              // main effect of skill mastery
+  real<lower=-10, upper=15> fHat[J];              // intercept or baseline probability
+  real<lower=-10, upper=15> dHat[J];              // main effect of skill mastery
   real<lower=0, upper=1> alpha1[I];
   real<lower=0, upper=1> alpha2[I];
 
