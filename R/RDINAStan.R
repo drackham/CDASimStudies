@@ -4,7 +4,6 @@
 #'
 #' @param model Model to use
 #' @param data Dataset to be used
-#' @param q Q-matrix to be sued
 #' @param wd Desired working directory (string)
 #' @param cores Number of cores to use
 #' @param iter Number of iterations
@@ -14,12 +13,11 @@
 #' @export
 #'
 
-stanSim <- function(model = "R-DINA-Non-Logit.stan", data, q, wd, cores, iter, chains ){
+stanSim <- function(model = "R-DINA-Non-Logit.stan", data, wd, cores, iter, chains ){
   setwd(wd)
 
   model <- system.file("Models", model, package="dcms") # See: https://stat.ethz.ch/pipermail/r-help/2010-August/247748.html
   data <- data
-  q <- q
 
   I <- data$I
   J <- data$J
