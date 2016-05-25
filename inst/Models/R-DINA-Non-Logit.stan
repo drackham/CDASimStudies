@@ -10,10 +10,10 @@ parameters {
   real<lower=0, upper=1> alpha1[I];
   real<lower=0, upper=1> alpha2[I];
 
-  real <lower=0, upper=50> a1[I];
-  real <lower=0, upper=50> b1[I];
-  real <lower=0, upper=50> a2[I];
-  real <lower=0, upper=50> b2[I];
+  real <lower=0, upper=30> a1[I];
+  real <lower=0, upper=30> b1[I];
+  real <lower=0, upper=30> a2[I];
+  real <lower=0, upper=30> b2[I];
 }
 
 model {
@@ -62,11 +62,11 @@ model {
 
   }
 
-  a1 ~ cauchy(0,5);
-  b1 ~ cauchy(0,5);
-
-  a2 ~ cauchy(0,5);
-  b2 ~ cauchy(0,5);
+//   a1 ~ cauchy(0,5);
+//   b1 ~ cauchy(0,5);
+// 
+//   a2 ~ cauchy(0,5);
+//   b2 ~ cauchy(0,5);
 
   # priors for RDINA parameters d and f
   dHat ~ normal(7,2);
