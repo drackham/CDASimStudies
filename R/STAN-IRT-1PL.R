@@ -2,7 +2,7 @@
 #'
 #' Fit a 1PL model to simulated data using STAN
 #'
-#' @oaram model Model to be used. Must be available in working directory
+#' @param model Model to be used. Must be available in working directory
 #' @param data Dataset to be used
 #' @param wd Desired working directory (string)
 #' @param cores Number of cores to use

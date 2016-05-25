@@ -7,6 +7,8 @@
 STAN_IRT_1PL(model = "IRT-1PL.stan", data, wd, cores, iter, chains)
 }
 \arguments{
+\item{model}{Model to be used. Must be available in working directory}
+
 \item{data}{Dataset to be used}
 
 \item{wd}{Desired working directory (string)}
