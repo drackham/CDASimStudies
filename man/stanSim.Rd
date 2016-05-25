@@ -4,14 +4,12 @@
 \alias{stanSim}
 \title{R-DINA Simulation in STAN}
 \usage{
-stanSim(model = "R-DINA-Non-Logit.stan", data, q, wd, cores, iter, chains)
+stanSim(model = "R-DINA-Non-Logit.stan", data, wd, cores, iter, chains)
 }
 \arguments{
 \item{model}{Model to use}
 
 \item{data}{Dataset to be used}
-
-\item{q}{Q-matrix to be sued}
 
 \item{wd}{Desired working directory (string)}
 
