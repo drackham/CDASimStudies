@@ -2,6 +2,7 @@
 #'
 #' Fit a R-DINA model to simulated data using STAN
 #'
+#' @param model Model to use
 #' @param data Dataset to be used
 #' @param q Q-matrix to be sued
 #' @param wd Desired working directory (string)
