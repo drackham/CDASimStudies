@@ -23,11 +23,11 @@ generateRDINAJags <- function(){
 		
 			# hyperpriors for alpha1 and alpha2
 
-			a1[i] ~ dgamma(2,2)
-			b1[i] ~ dgamma(2,2)
+			a1[i] ~ dnorm(0, 0.01)I(0,)
+			b1[i] ~ dnorm(0, 0.01)I(0,)
 			
-			a2[i] ~ dgamma(2,2)
-			b2[i] ~ dgamma(2,2)
+			a2[i] ~ dnorm(0, 0.01)I(0,)
+			b2[i] ~ dnorm(0, 0.01)I(0,)
 
 			p[i,1] <- 1 / (1 + exp(-fHat[1] - dHat[1] * (alpha1[i])))
 			p[i,2] <- 1 / (1 + exp(-fHat[2] - dHat[2] * (alpha1[i])))
