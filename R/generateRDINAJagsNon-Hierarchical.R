@@ -43,16 +43,16 @@ generateRDINAJagsNonHierachical <- function(){
       p[i,19] <- 1 / (1 + exp(-fHat[19] - dHat[19] * (alpha2[i])))
       p[i,20] <- 1 / (1 + exp(-fHat[20] - dHat[20] * (alpha2[i])))
 
-      p[i,21] <- 1 / (1 + exp(-fHat[21] - dHat[21] * (alpha1[i] * alpha2[i]))) 
-      p[i,22] <- 1 / (1 + exp(-fHat[22] - dHat[22] * (alpha1[i] * alpha2[i]))) 
-      p[i,23] <- 1 / (1 + exp(-fHat[23] - dHat[23] * (alpha1[i] * alpha2[i]))) 
-      p[i,24] <- 1 / (1 + exp(-fHat[24] - dHat[24] * (alpha1[i] * alpha2[i]))) 
-      p[i,25] <- 1 / (1 + exp(-fHat[25] - dHat[25] * (alpha1[i] * alpha2[i]))) 
-      p[i,26] <- 1 / (1 + exp(-fHat[26] - dHat[26] * (alpha1[i] * alpha2[i]))) 
-      p[i,27] <- 1 / (1 + exp(-fHat[27] - dHat[27] * (alpha1[i] * alpha2[i]))) 
-      p[i,28] <- 1 / (1 + exp(-fHat[28] - dHat[28] * (alpha1[i] * alpha2[i]))) 
-      p[i,29] <- 1 / (1 + exp(-fHat[29] - dHat[29] * (alpha1[i] * alpha2[i]))) 
-      p[i,30] <- 1 / (1 + exp(-fHat[30] - dHat[30] * (alpha1[i] * alpha2[i]))) 
+      p[i,21] <- 1 / (1 + exp(-fHat[21] - dHat[21] * (alpha1[i] * alpha2[i])))
+      p[i,22] <- 1 / (1 + exp(-fHat[22] - dHat[22] * (alpha1[i] * alpha2[i])))
+      p[i,23] <- 1 / (1 + exp(-fHat[23] - dHat[23] * (alpha1[i] * alpha2[i])))
+      p[i,24] <- 1 / (1 + exp(-fHat[24] - dHat[24] * (alpha1[i] * alpha2[i])))
+      p[i,25] <- 1 / (1 + exp(-fHat[25] - dHat[25] * (alpha1[i] * alpha2[i])))
+      p[i,26] <- 1 / (1 + exp(-fHat[26] - dHat[26] * (alpha1[i] * alpha2[i])))
+      p[i,27] <- 1 / (1 + exp(-fHat[27] - dHat[27] * (alpha1[i] * alpha2[i])))
+      p[i,28] <- 1 / (1 + exp(-fHat[28] - dHat[28] * (alpha1[i] * alpha2[i])))
+      p[i,29] <- 1 / (1 + exp(-fHat[29] - dHat[29] * (alpha1[i] * alpha2[i])))
+      p[i,30] <- 1 / (1 + exp(-fHat[30] - dHat[30] * (alpha1[i] * alpha2[i])))
 
     }
 		# hyperpriors for alpha1 and alpha2
