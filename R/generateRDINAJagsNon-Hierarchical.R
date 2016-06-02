@@ -18,8 +18,8 @@ generateRDINAJagsNonHierachical <- function(){
     }
 
     for (i in 1:I) {
-      alpha1[i] ~ dbern(sc1)
-      alpha2[i] ~ dbern(sc2)
+      alpha1[i] ~ dbern(p1)
+      alpha2[i] ~ dbern(p2)
 
       p[i,1] <- 1 / (1 + exp(-fHat[1] - dHat[1] * (alpha1[i])))
       p[i,2] <- 1 / (1 + exp(-fHat[2] - dHat[2] * (alpha1[i])))
@@ -57,8 +57,8 @@ generateRDINAJagsNonHierachical <- function(){
     }
 		# hyperpriors for alpha1 and alpha2
 
-    sc1 ~ dbeta(1,1)
-    sc2 ~ dbeta(1,1)
+    p1 ~ dbeta(1,1)
+    p2 ~ dbeta(1,1)
 
     # priors for RDINA parameters d and f
     for (j in 1:J) {
