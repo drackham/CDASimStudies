@@ -37,21 +37,16 @@ stanSim <- function(model = "R-DINA-Non-Logit.stan", data, wd, cores, iter, chai
 
   # function form 2 with an argument named `chain_id`
   # This is copied from ?stan
-  initf2 <- function() {
+
+  initf2 <- function(chain_id = 1) {
     list(fHat = fHatInit, dHat = dHatInit, alpha1 = alpha1Init,
          alpha2 = alpha2Init, a1 = a1Init, a2 = a2Init,
          b1 = b1Init, b2 = b2Init)
   }
-#   initf2 <- function(chain_id = 1) {
-#     list(fHat = fHatInit, dHat = dHatInit, alpha1 = alpha1Init,
-#          alpha2 = alpha2Init, a1 = a1Init, a2 = a2Init,
-#          b1 = b1Init, b2 = b2Init)
-#   }
 
   # generate a list of lists to specify initial values
   # Copied from ?stan
-  # init_ll <- lapply(1:chains, function(id) initf2(chain_id = id))
-  init_ll <- lapply(1:chains, initf2)
+  init_ll <- lapply(1:chains, function(id) initf2(chain_id = id))
 
   rstan::stan(file = model,
                       data = list(I=I,J=J,y=y),
