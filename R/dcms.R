@@ -186,3 +186,12 @@ NULL
 #' @author Dave Rackham June 2016
 #' @format A data list of responses, locations etc.
 NULL
+
+#' @docType data
+#' @name continuous_SimpleQ.100
+#' @title Continuous DCM (Experimental) Simple Q 100 Data
+#' @usage data(continuous_SimpleQ.100)
+#' @description This is an experimental data set for a continuous DCM
+#' @author Dave Rackham Oct 2016
+#' @format A data list of responses, locations etc.
+NULL
