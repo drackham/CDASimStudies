@@ -30,10 +30,10 @@ stanSim <- function(model = "R-DINA-Non-Logit.stan", data, wd, cores, iter, chai
   dHatInit <- stats::rnorm(J, -3, 2)
   alpha1Init <- stats::rbeta(I, 1, 1)
   alpha2Init <- stats::rbeta(I, 1, 1)
-  a1Init <- stats::rgamma(I, 4, 4)
-  a2Init <- stats::rgamma(I, 4, 4)
-  b1Init <- stats::rgamma(I, 4, 4)
-  b2Init <- stats::rgamma(I, 4, 4)
+  a1Init <- stats::rgamma(1, 4, 4)
+  a2Init <- stats::rgamma(1, 4, 4)
+  b1Init <- stats::rgamma(1, 4, 4)
+  b2Init <- stats::rgamma(1, 4, 4)
 
   # function form 2 with an argument named `chain_id`
   # This is copied from ?stan
