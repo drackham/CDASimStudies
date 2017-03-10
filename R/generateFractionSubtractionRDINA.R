@@ -65,7 +65,7 @@ generateFractionSubtractionRDINA <- function(){
 
     # priors for RDINA parameters d and f
     for (j in 1:J) {
-    dHat[j] ~ dnorm(0,.05)
+    dHat[j] ~ dgamma(1,.03)
     fHat[j] ~ dnorm(0,.05)
     }
 
