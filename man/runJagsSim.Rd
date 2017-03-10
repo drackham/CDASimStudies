@@ -28,14 +28,13 @@ runJagsSim(data, q = NULL, jagsModel = "simplifiedRUM.jags",
 \description{
 Fit a simplified RUM model to simulated data and evaluate data-model fit using JAGS.
 }
-\author{
-Dave Rackham \email{ddrackham@gmail.com}
-}
 \references{
 \url{http://onlinelibrary.wiley.com/doi/10.1002/j.2333-8504.2008.tb02157.x/abstract}
+}
+\author{
+Dave Rackham \email{ddrackham@gmail.com}
 }
 \keyword{JAGS}
 \keyword{RUM}
 \keyword{hartz}
 \keyword{roussos}
-

@@ -14,4 +14,3 @@ This data set represents simulated R-DINA Simple Q uninformative
 \author{
 Dave Rackham June 2016
 }
-

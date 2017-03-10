@@ -8,7 +8,7 @@ Maintainer: <ddrackham@gmail.com>
 Description: Enables simulations of data-model fit for Cognitive Diagnostic Models.
 License: GPL-3
 LazyData: TRUE
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
 Imports:
     stats,
     runjags,

@@ -14,4 +14,3 @@ This data set represents simulated R-DINA Simple Q with fixed d and f for 500 ex
 \author{
 Dave Rackham May 2016
 }
-

@@ -14,4 +14,3 @@ This data set represents simulated R-DINA Simple Q with high noise
 \author{
 Dave Rackham June 2016
 }
-

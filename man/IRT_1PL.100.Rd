@@ -14,4 +14,3 @@ This data set represents simulated 1PL model data for 100 examinees
 \author{
 Dave Rackham May 2016
 }
-

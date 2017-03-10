@@ -25,12 +25,11 @@ rDINAJagsSim(data, jagsModel = "RDINA.jags", maxCores = 3,
 \description{
 Fit a RDINA model to simulated data and evaluate data-model fit using JAGS.
 }
-\author{
-Dave Rackham \email{ddrackham@gmail.com}
-}
 \references{
 \url{http://onlinelibrary.wiley.com/doi/10.1002/j.2333-8504.2008.tb02157.x/abstract}
 }
+\author{
+Dave Rackham \email{ddrackham@gmail.com}
+}
 \keyword{JAGS}
 \keyword{RDINA}
-

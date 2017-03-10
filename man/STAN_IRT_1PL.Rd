@@ -28,4 +28,3 @@ Dave Rackham \email{ddrackham@gmail.com}
 \keyword{1PL}
 \keyword{IRT}
 \keyword{STAN}
-

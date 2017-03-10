@@ -9,12 +9,11 @@ generateRDINAJags()
 \description{
 Generates the RDINA Jags model for a simple data set
 }
-\author{
-Dave Rackham \email{ddrackham@gmail.com}
-}
 \references{
 \url{http://onlinelibrary.wiley.com/doi/10.1002/j.2333-8504.2008.tb02157.x/abstract}
 }
+\author{
+Dave Rackham \email{ddrackham@gmail.com}
+}
 \keyword{JAGS}
 \keyword{RDINA}
-

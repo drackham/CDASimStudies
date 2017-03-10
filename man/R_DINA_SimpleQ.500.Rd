@@ -14,4 +14,3 @@ This data set represents simulated R-DINA Simple Q for 500 examinees
 \author{
 Dave Rackham May 2016
 }
-
