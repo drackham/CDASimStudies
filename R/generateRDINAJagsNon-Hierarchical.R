@@ -62,8 +62,8 @@ generateRDINAJagsNonHierachical <- function(){
 
     # priors for RDINA parameters d and f
     for (j in 1:J) {
-      dHat[j] ~ dnorm(0,.01)
-      fHat[j] ~ dnorm(0,.01)
+      dHat[j] ~ dnorm(0,.05)
+      fHat[j] ~ dnorm(0,.05)
     }
 
   }"
