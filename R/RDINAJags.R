@@ -3,6 +3,7 @@
 #' Fit a RDINA model to simulated data and evaluate data-model fit using JAGS.
 #'
 #' @param data Uses the rDINAData function to generate data
+#' @param jags.params The variables which JAGS should save
 #' @param jagsModel The specified model for JAGS to use
 #' @param maxCores Maximum number of cores allowed
 #' @param adaptSteps Adapt Steps
@@ -16,6 +17,7 @@
 
 rDINAJagsSim <- function(data,
                        jagsModel = "RDINA.jags",
+                       jags.params = c('fHat', 'dHat'),
 											 maxCores = 3,
                        adaptSteps = 10,
                        burnInSteps = 40,
