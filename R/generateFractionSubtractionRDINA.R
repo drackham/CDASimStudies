@@ -73,5 +73,5 @@ generateFractionSubtractionRDINA <- function(){
   )
 
   # Write the string
-  writeLines (modelString, con="R-DINA-Non-Hierarchical.jags")
+  writeLines (modelString, con="Fraction-Subtraction-RDINA.jags")
 }
