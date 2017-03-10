@@ -3,6 +3,7 @@
 export(STAN_IRT_1PL)
 export(continuousStan)
 export(generateExplicitPriorsRUMJags)
+export(generateFractionSubtractionRDINA)
 export(generateHO_R_DINA_Jags)
 export(generateRDINAJags)
 export(generateRDINAJagsNonHierachical)
